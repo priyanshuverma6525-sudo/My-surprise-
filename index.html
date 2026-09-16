@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Friendship 💖</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#fff4f8);
+  overflow:hidden;
+}
+
+.card{
+  width:90%;
+  max-width:420px;
+  padding:35px 22px;
+  text-align:center;
+  background:rgba(255,255,255,.8);
+  border-radius:28px;
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+}
+
+.emoji{
+  font-size:75px;
+  animation:bounce 1.5s infinite;
+}
+
+h1{
+  color:#e83e75;
+  font-size:28px;
+  margin:15px 0;
+}
+
+p{
+  color:#555;
+  font-size:17px;
+  line-height:1.5;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:25px;
+}
+
+button{
+  border:0;
+  padding:13px 28px;
+  border-radius:30px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4f87;
+  color:white;
+}
+
+#no{
+  background:#eee;
+  color:#555;
+}
+
+#message{
+  display:none;
+}
+
+.heart{
+  position:fixed;
+  bottom:-30px;
+  font-size:25px;
+  animation:float 5s linear forwards;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+
+  <div class="emoji">🧸💖</div>
+
+  <h1>Hey Bestie! 🥰</h1>
+
+  <p>
+    Life is more fun when you have a special friend
+    to share your crazy moments with.
+  </p>
+
+  <p><b>Will you always be my best friend? 💕</b></p>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onclick="noClicked()">NO 😜</button>
+  </div>
+
+</div>
+
+<div class="card" id="message">
+
+  <div class="emoji">🎉💖🥳</div>
+
+  <h1>Yaaay! ❤️</h1>
+
+  <p>
+    I knew you would say YES! 😄
+  </p>
+
+  <p>
+    Here's to lots of laughter, crazy memories
+    and an amazing friendship! 🫶
+  </p>
+
+  <h2>Besties Forever 💕</h2>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+function yesClicked(){
+
+  document.getElementById("mainCard").style.display="none";
+  document.getElementById("message").style.display="block";
+
+  for(let i=0;i<25;i++){
+    setTimeout(createHeart,i*100);
+  }
+}
+
+function noClicked(){
+
+  noCount++;
+
+  const noButton=document.getElementById("no");
+
+  if(noCount===1){
+    noButton.innerText="Are you sure? 😭";
+  }
+  else if(noCount===2){
+    noButton.innerText="Think again! 🥺";
+  }
+  else if(noCount===3){
+    noButton.innerText="Really? 😭";
+  }
+  else{
+    noButton.innerText="Okay 😅";
+  }
+}
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="heart";
+  heart.innerHTML=["💖","💕","💗","💓","✨"][Math.floor(Math.random()*5)];
+
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+}
+
+</script>
+
+</body>
+</html>
