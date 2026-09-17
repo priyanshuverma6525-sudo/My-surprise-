@@ -1027,9 +1027,9 @@ footer{
 </button>
 
 <script>
+
 function checkPassword() {
-    const password =
-        document.getElementById("passwordInput").value;
+    const password = document.getElementById("passwordInput").value;
 
     if (password === "Bestie123") {
         document.getElementById("passwordScreen").style.display = "none";
@@ -1043,7 +1043,98 @@ function checkPassword() {
 function openWebsite() {
     document.getElementById("opening").style.display = "none";
     document.getElementById("website").style.display = "block";
+    window.scrollTo(0, 0);
 }
+
+
+/* MUSIC */
+
+let musicPlaying = false;
+
+function toggleMusic() {
+    const player = document.getElementById("musicPlayer");
+    const button = document.querySelector(".music-btn");
+
+    if (!musicPlaying) {
+        player.play();
+        musicPlaying = true;
+        button.innerHTML = "⏸ Pause Music";
+    } else {
+        player.pause();
+        musicPlaying = false;
+        button.innerHTML = "▶ Play Music";
+    }
+}
+
+
+/* QUESTIONS */
+
+const questions = [
+    "Do you think our friendship has created some unforgettable memories? 💖",
+    "Which kind of memories do you enjoy more — funny ones or peaceful ones? 😂✨",
+    "Do random conversations sometimes become your favourite conversations? 😜",
+    "If we could make one new memory tomorrow, what would you choose? 🌸",
+    "Do you think good friends can make ordinary days more fun? 🫶",
+    "Should we keep creating more funny and memorable moments? 😎",
+    "After seeing all these memories, are you happy with our friendship? 💖"
+];
+
+let currentQuestion = 0;
+
+function answerQuestion(answer) {
+    document.getElementById("questionResult").innerHTML =
+        "Your answer: <b>" + answer +
+        "</b><br><br>That's a good answer! 😄💖";
+
+    document.getElementById("nextButton").style.display = "block";
+}
+
+function nextQuestion() {
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+
+        document.getElementById("questionNumber").innerHTML =
+            "Completed! 🎉";
+
+        document.getElementById("questionText").innerHTML =
+            "You answered all 7 questions! 🥳💖";
+
+        document.querySelector(".answer-buttons").style.display = "none";
+
+        document.getElementById("questionResult").style.display = "none";
+
+        document.getElementById("nextButton").style.display = "none";
+
+        const celebration =
+            document.getElementById("questionCelebration");
+
+        if (celebration) {
+            celebration.style.display = "block";
+        }
+
+        return;
+    }
+
+    document.getElementById("questionNumber").innerHTML =
+        "Question " + (currentQuestion + 1) + " of 7";
+
+    document.getElementById("questionText").innerHTML =
+        questions[currentQuestion];
+
+    document.getElementById("questionResult").innerHTML = "";
+
+    document.getElementById("nextButton").style.display = "none";
+}
+
+
+/* GIFT */
+
+function openGift() {
+    document.getElementById("giftFront").style.display = "none";
+    document.getElementById("giftInside").style.display = "flex";
+}
+
 </script>
 
 </body>
