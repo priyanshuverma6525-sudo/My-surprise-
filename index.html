@@ -1020,10 +1020,16 @@ footer{
             Next Question ➜
         </button>
 
-        <div class="celebration" id="questionCelebr
+        <div id="questionResult"></div>
+
+<button class="next-btn" id="nextButton" onclick="nextQuestion()">
+    Next Question ➜
+</button>
+
 <script>
 function checkPassword() {
-    const password = document.getElementById("passwordInput").value;
+    const password =
+        document.getElementById("passwordInput").value;
 
     if (password === "Bestie123") {
         document.getElementById("passwordScreen").style.display = "none";
@@ -1038,6 +1044,7 @@ function openWebsite() {
     document.getElementById("opening").style.display = "none";
     document.getElementById("website").style.display = "block";
 }
-        </script>
-            </body>
-        </html>
+</script>
+
+</body>
+    </html>
