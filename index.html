@@ -1021,3 +1021,23 @@ footer{
         </button>
 
         <div class="celebration" id="questionCelebr
+<script>
+function checkPassword() {
+    const password = document.getElementById("passwordInput").value;
+
+    if (password === "Bestie123") {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("opening").style.display = "flex";
+    } else {
+        document.getElementById("error").innerHTML =
+            "Wrong password 😜 Try again!";
+    }
+}
+
+function openWebsite() {
+    document.getElementById("opening").style.display = "none";
+    document.getElementById("website").style.display = "block";
+}
+        </script>
+            </body>
+        </html>
